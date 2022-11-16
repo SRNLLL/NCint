@@ -31,7 +31,6 @@ simpsons(f,c(4,6),1000)
 
 
 ```{r}
-#library(integrate)
 ## Set seed so results can be reproduced
 set.seed(8888)
 
@@ -60,7 +59,30 @@ plot_df1 %>%
 ```
 
 
+```{r}
+f= function(x){
+  x^4+x^2
+}
+#since the n=1000 is too larger, so i pick a samll n=10 with same other parameters for comparing three methods
+a=riemann(f,c(4,6),10)
+b=trapezoid(f,c(4,6),10)
+c=simpsons(f,c(4,6),10)
+#use integrate function to calculate their true value 
+d=integrate(f,4,6)
+```
+1.how to run the functions in your package
+define an example function f(x)=x^4+x^2 with same parameters and use those three methods to run the functions in my package. 
+first define the parameters x and n  we will use in the future. deinfe x from 1 to 10 which cover the distance 4 to 6.
+plot a function with x for a basic graph. then, define second plot for the target area shaded based on the methods. 
+finally, we get the integral shaded area.
 
+2.compare the different methods of integration for some function
+compare the results from three integration methods：riemann,trapezoid and simpsons with theri true values. 
+First define the integrate function by using integrate() with same parameters as three methods.here I changed the observation size n to 10.
+Then, find the differences from the true values: riemann:a-d=1297.107-1401.067=-104.563. trapezoid:b-d=1403.107-1401.067=2.04
+and simspon:c-d=1401.067-1401.067=0.
+From the results we have, simpons is more efficient and accurate. since simspon a smaller distance difference from the true value. It is not absolute 0 because we keep the decimals to 3.
+Simpson's rule uses quadratic approximations instead of linear approximations. It has a higher order than the other two.It also gives the exact area beneath the graphs of functions of degree two or less, while the other methods are only exact for functions whose graphs are linear.
 
 
 
