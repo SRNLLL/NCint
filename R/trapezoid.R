@@ -1,4 +1,3 @@
-library(roxygen2)
 #' Title
 #'
 #' @param f a function with a single argument x
