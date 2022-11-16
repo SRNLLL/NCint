@@ -1,0 +1,66 @@
+---
+title: "my_vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(NCint)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r}
+#showing examples for three functions
+f = function(x) x^4+x^2
+riemann(f,c(4,6),1000)
+trapezoid(f,c(4,6),1000)
+simpsons(f,c(4,6),1000)
+```
+
+
+
+```{r}
+#library(integrate)
+## Set seed so results can be reproduced
+set.seed(8888)
+
+## Simulate responses
+n <- 1000
+x <- seq(1,10,len=n)
+f <- function(x){
+  x^4+x^2
+}
+## Plot the function
+plot_df1 <- tibble(x = x,f = f(x))
+
+plot_df2 <- plot_df1 %>%
+  filter(x <= 6 & x>=4) %>% 
+  bind_rows(tibble(x = 4, f = 0)) %>% 
+  bind_rows(tibble(x = 6, f = 0))
+
+plot_df1 %>%
+  ggplot(aes(x = x, y = f)) + 
+  geom_line(colour = "blue") +
+  ylab("Density") + 
+  geom_hline(yintercept = 0)+
+  geom_area(data = plot_df2, fill = "blue", alpha = .5)
+
+
+```
+
+
+
+
+
+
