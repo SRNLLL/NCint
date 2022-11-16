@@ -79,8 +79,8 @@ finally, we get the integral shaded area.
 2.compare the different methods of integration for some function
 compare the results from three integration methods：riemann,trapezoid and simpsons with theri true values. 
 First define the integrate function by using integrate() with same parameters as three methods.here I changed the observation size n to 10.
-Then, find the differences from the true values: riemann:a-d=1297.107-1401.067=-104.563. trapezoid:b-d=1403.107-1401.067=2.04
-and simspon:c-d=1401.067-1401.067=0.
+Then, find the differences from the true values: riemann:absolute value of a-d=1297.107-1401.067=104.563. trapezoid:absolute value of b-d=1403.107-1401.067=2.04
+and absolute value of simspon:c-d=1401.067-1401.067=0.
 From the results we have, simpons is more efficient and accurate. since simspon a smaller distance difference from the true value. It is not absolute 0 because we keep the decimals to 3.
 Simpson's rule uses quadratic approximations instead of linear approximations. It has a higher order than the other two.It also gives the exact area beneath the graphs of functions of degree two or less, while the other methods are only exact for functions whose graphs are linear.
 
